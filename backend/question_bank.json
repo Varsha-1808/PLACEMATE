@@ -1,0 +1,256 @@
+{
+  "interview_questions": [
+    {
+      "id": 1,
+      "topic": "OOP",
+      "question": "What is Object-Oriented Programming? Explain its four main principles.",
+      "ideal_answer": "Object-Oriented Programming (OOP) is a paradigm that organizes software design around objects rather than functions. The four main principles are: Encapsulation, which bundles data and methods together and restricts direct access; Inheritance, which allows a new class to derive properties from an existing class for code reuse; Polymorphism, which allows objects to take multiple forms or respond differently to the same method call; and Abstraction, which hides implementation complexity and exposes only necessary features to the user."
+    },
+    {
+      "id": 2,
+      "topic": "Data Structures",
+      "question": "What is the difference between a Stack and a Queue? Give real-world examples.",
+      "ideal_answer": "A Stack is a linear data structure that follows LIFO, Last In First Out, meaning the last inserted element is removed first. Operations are push and pop at the top. Real-world examples include the browser back button, undo feature, and function call stack. A Queue follows FIFO, First In First Out, meaning the first inserted element is removed first. Operations are enqueue at the rear and dequeue from the front. Real-world examples include print spooling, CPU task scheduling, and customer service lines."
+    },
+    {
+      "id": 3,
+      "topic": "DBMS",
+      "question": "What is normalization in databases? Explain 1NF, 2NF, and 3NF.",
+      "ideal_answer": "Normalization is the process of organizing a relational database to minimize data redundancy and improve integrity by dividing large tables into smaller related tables. First Normal Form, 1NF, ensures each column has atomic values and each row is unique with a primary key. Second Normal Form, 2NF, satisfies 1NF and removes partial dependencies meaning every non-key attribute depends on the full primary key. Third Normal Form, 3NF, satisfies 2NF and removes transitive dependencies meaning non-key attributes should only depend on the primary key and not on other non-key attributes."
+    },
+    {
+      "id": 4,
+      "topic": "Operating Systems",
+      "question": "What is a deadlock? What are the four Coffman conditions for deadlock?",
+      "ideal_answer": "A deadlock is a situation in a multi-process system where two or more processes are permanently blocked, each waiting for a resource held by another in the set. The four Coffman conditions required for deadlock are: Mutual Exclusion, where at least one resource is non-shareable; Hold and Wait, where a process holds a resource while waiting for additional ones; No Preemption, where resources cannot be forcibly taken from a process; and Circular Wait, where a closed chain of processes exists where each holds a resource needed by the next process."
+    },
+    {
+      "id": 5,
+      "topic": "Networking",
+      "question": "Explain the OSI model and its seven layers.",
+      "ideal_answer": "The OSI model is a conceptual framework that standardizes network communication into seven layers. Layer 1, Physical, handles raw bit transmission over physical media. Layer 2, Data Link, manages node-to-node transfer using MAC addresses with error detection. Layer 3, Network, handles logical addressing and routing using IP addresses. Layer 4, Transport, provides end-to-end reliable delivery using TCP or UDP. Layer 5, Session, manages and controls sessions between applications. Layer 6, Presentation, handles data encryption, compression, and format translation. Layer 7, Application, provides services directly to the user applications like HTTP, FTP, and SMTP."
+    },
+    {
+      "id": 6,
+      "topic": "Algorithms",
+      "question": "What is Big O notation? State the time complexity of common sorting algorithms.",
+      "ideal_answer": "Big O notation is a mathematical notation describing the worst-case time or space complexity of an algorithm as input size n grows. It describes the upper bound of growth. Common sorting algorithm complexities include: Bubble Sort with O(n squared) average and worst case; Selection Sort always O(n squared); Insertion Sort O(n squared) worst but O(n) best; Merge Sort O(n log n) always with O(n) space; Quick Sort O(n log n) average but O(n squared) worst case; and Heap Sort O(n log n) in all cases. The theoretical lower bound for comparison-based sorting is O(n log n)."
+    },
+    {
+      "id": 7,
+      "topic": "Web Development",
+      "question": "What is the difference between GET and POST HTTP methods?",
+      "ideal_answer": "GET is used to request and retrieve data from a server. Parameters are visible in the URL as query strings, making it less secure for sensitive data. GET requests are cached, bookmarkable, and have URL length limitations. They should be idempotent, meaning repeated requests give the same result. POST is used to send data to the server to create or update a resource. Data is sent in the request body, not in the URL, so it is more secure and suitable for sensitive information like passwords. POST requests are not cached, cannot be bookmarked, and have no data size limit."
+    },
+    {
+      "id": 8,
+      "topic": "Data Structures",
+      "question": "What is a linked list? Compare its advantages and disadvantages with arrays.",
+      "ideal_answer": "A linked list is a linear data structure where elements called nodes are stored at non-contiguous memory locations. Each node contains data and a pointer to the next node. Types include singly, doubly, and circular linked lists. Advantages over arrays include dynamic sizing without reallocation, and efficient O(1) insertion and deletion when the position is known. Disadvantages include no random access since traversal is O(n), extra memory needed for pointers, not cache-friendly due to scattered memory, and no backward traversal in singly linked lists. Arrays offer O(1) random access by index but have fixed size and costly insertions and deletions."
+    },
+    {
+      "id": 9,
+      "topic": "DBMS",
+      "question": "What are SQL JOIN types? Explain each with examples.",
+      "ideal_answer": "SQL JOINs combine rows from multiple tables based on a related column. INNER JOIN returns only rows with matching values in both tables, excluding non-matches. LEFT JOIN returns all rows from the left table and matching rows from the right, with NULL for unmatched right rows. RIGHT JOIN returns all rows from the right table and matching rows from the left, with NULL for unmatched left rows. FULL OUTER JOIN returns all rows from both tables with NULLs where no match exists. CROSS JOIN returns the Cartesian product of both tables, combining every row of the first with every row of the second. SELF JOIN joins a table to itself, useful for hierarchical or comparative data."
+    },
+    {
+      "id": 10,
+      "topic": "Operating Systems",
+      "question": "What is virtual memory and how does paging work?",
+      "ideal_answer": "Virtual memory is a memory management technique that allows a process to use more memory than is physically available by using disk storage as an extension of RAM. Each process gets its own virtual address space mapped to physical frames. Memory is divided into fixed-size pages and the OS maintains a page table to map virtual to physical addresses. When a process accesses a page not in RAM, a page fault occurs and the OS loads the required page from disk, potentially evicting another page using algorithms like LRU or FIFO. Benefits include running large programs, isolating process memory spaces, and efficient memory utilization through demand paging."
+    },
+    {
+      "id": 11,
+      "topic": "Algorithms",
+      "question": "Explain binary search and its time complexity. When can it be applied?",
+      "ideal_answer": "Binary search is an efficient searching algorithm that works only on sorted arrays by repeatedly halving the search space. It compares the target value with the middle element. If they match, the search ends. If the target is smaller, search continues in the left half; if larger, in the right half. This process repeats until the target is found or the interval is empty. Time complexity is O(log n) in average and worst cases because each step eliminates half the elements. Best case is O(1) if the target is the middle element. Space complexity is O(1) for iterative and O(log n) for recursive. It requires the array to be sorted before application."
+    },
+    {
+      "id": 12,
+      "topic": "Software Engineering",
+      "question": "What is the SDLC? Describe the Agile methodology.",
+      "ideal_answer": "The Software Development Life Cycle, SDLC, is a structured process for planning, developing, testing, and deploying software. Common phases include Requirements Gathering, System Design, Implementation, Testing, Deployment, and Maintenance. Agile is an iterative and incremental methodology that focuses on delivering working software in short cycles called sprints, typically one to four weeks. Agile principles emphasize customer collaboration over contract negotiation, responding to change over following a rigid plan, and working software over extensive documentation. Popular Agile frameworks include Scrum, Kanban, and Extreme Programming. Benefits include faster delivery, flexibility to changing requirements, and continuous feedback from stakeholders."
+    },
+    {
+      "id": 13,
+      "topic": "Web Development",
+      "question": "What is a REST API? Explain its key architectural constraints.",
+      "ideal_answer": "REST, Representational State Transfer, is an architectural style for designing networked applications using standard HTTP methods. A REST API enables communication between client and server through well-defined endpoints. Key constraints include Statelessness, where each request must contain all necessary information without relying on server-side session state; Client-Server separation, where client and server are independent and communicate through a uniform interface; Uniform Interface, using HTTP methods GET for read, POST for create, PUT for update, DELETE for remove, with resources identified by URIs; Cacheability, where responses should declare if they can be cached; and Layered System, where client cannot tell if it is connected directly to the server or through intermediaries."
+    },
+    {
+      "id": 14,
+      "topic": "Python",
+      "question": "What are Python decorators? Give a practical example.",
+      "ideal_answer": "Decorators in Python are higher-order functions that add functionality to an existing function without modifying its source code. They are applied using the at symbol followed by the decorator name above the function definition. Decorators take the target function as argument, wrap it with additional behavior, and return a modified version. Common built-in decorators include @staticmethod, @classmethod, and @property. Practical examples include a logging decorator that prints function name and arguments before execution, a timer decorator that measures execution time, a caching decorator that stores results of expensive calls, and authentication decorators in frameworks like Flask that check if a user is logged in before allowing access."
+    },
+    {
+      "id": 15,
+      "topic": "OOP",
+      "question": "What is the difference between abstraction and encapsulation in object-oriented programming?",
+      "ideal_answer": "Abstraction and encapsulation are both OOP principles but serve different purposes. Abstraction is about hiding complexity and showing only the essential features of an object to the outside world. It answers the question of what an object does. It is achieved through abstract classes and interfaces where only method signatures are defined without implementation details. Encapsulation is about bundling data and the methods that operate on it into a single unit or class, and controlling access to that data using access modifiers like private, protected, and public. It answers the question of how an object is structured internally. In summary, abstraction hides design complexity while encapsulation hides data implementation details."
+    }
+  ],
+  "aptitude_questions": [
+    {
+      "id": 1,
+      "topic": "Quantitative",
+      "question": "A train travels 360 km in 4 hours. How long will it take to travel 540 km at the same speed?",
+      "options": ["5 hours", "6 hours", "6.5 hours", "7 hours"],
+      "correct_answer": "6 hours",
+      "explanation": "Speed = 360/4 = 90 km/h. Time = 540/90 = 6 hours."
+    },
+    {
+      "id": 2,
+      "topic": "Logical Reasoning",
+      "question": "If all Bloops are Razzies and all Razzies are Lazzies, then all Bloops are definitely:",
+      "options": ["Razzies only", "Lazzies", "Neither Razzies nor Lazzies", "Cannot determine"],
+      "correct_answer": "Lazzies",
+      "explanation": "By transitivity: Bloops → Razzies → Lazzies, so all Bloops are Lazzies."
+    },
+    {
+      "id": 3,
+      "topic": "Quantitative",
+      "question": "What is 15% of 240?",
+      "options": ["36", "38", "32", "34"],
+      "correct_answer": "36",
+      "explanation": "15% of 240 = (15/100) × 240 = 36."
+    },
+    {
+      "id": 4,
+      "topic": "Verbal",
+      "question": "Choose the word most similar in meaning to 'BENEVOLENT':",
+      "options": ["Cruel", "Generous", "Lazy", "Hostile"],
+      "correct_answer": "Generous",
+      "explanation": "Benevolent means well-meaning and generous in spirit."
+    },
+    {
+      "id": 5,
+      "topic": "Quantitative",
+      "question": "A shopkeeper sells an item at 20% profit. If cost price is ₹500, what is the selling price?",
+      "options": ["₹550", "₹580", "₹600", "₹620"],
+      "correct_answer": "₹600",
+      "explanation": "Selling Price = Cost Price × 1.20 = 500 × 1.20 = ₹600."
+    },
+    {
+      "id": 6,
+      "topic": "Logical Reasoning",
+      "question": "Complete the number series: 2, 6, 12, 20, 30, __",
+      "options": ["40", "42", "44", "46"],
+      "correct_answer": "42",
+      "explanation": "Differences: 4, 6, 8, 10, 12. Next term = 30 + 12 = 42."
+    },
+    {
+      "id": 7,
+      "topic": "Quantitative",
+      "question": "If 6 workers complete a task in 12 days, how many days will 9 workers take?",
+      "options": ["6 days", "7 days", "8 days", "9 days"],
+      "correct_answer": "8 days",
+      "explanation": "Using inverse proportion: 6 × 12 = 9 × d → d = 72/9 = 8 days."
+    },
+    {
+      "id": 8,
+      "topic": "Verbal",
+      "question": "Choose the antonym of 'VERBOSE':",
+      "options": ["Talkative", "Wordy", "Concise", "Detailed"],
+      "correct_answer": "Concise",
+      "explanation": "Verbose means using too many words. Concise is its opposite."
+    },
+    {
+      "id": 9,
+      "topic": "Logical Reasoning",
+      "question": "Find the odd one out: Apple, Mango, Banana, Potato, Orange",
+      "options": ["Apple", "Mango", "Potato", "Banana"],
+      "correct_answer": "Potato",
+      "explanation": "All others are fruits; Potato is a vegetable."
+    },
+    {
+      "id": 10,
+      "topic": "Quantitative",
+      "question": "Ratio of boys to girls in a class is 3:2. If there are 30 students, how many are boys?",
+      "options": ["12", "15", "18", "20"],
+      "correct_answer": "18",
+      "explanation": "Boys = (3/5) × 30 = 18."
+    },
+    {
+      "id": 11,
+      "topic": "Quantitative",
+      "question": "Simple interest on ₹2000 at 5% per annum for 3 years?",
+      "options": ["₹200", "₹250", "₹300", "₹350"],
+      "correct_answer": "₹300",
+      "explanation": "SI = (P × R × T) / 100 = (2000 × 5 × 3) / 100 = ₹300."
+    },
+    {
+      "id": 12,
+      "topic": "Logical Reasoning",
+      "question": "What comes next in the series: 1, 4, 9, 16, 25, __?",
+      "options": ["30", "35", "36", "49"],
+      "correct_answer": "36",
+      "explanation": "These are perfect squares: 1², 2², 3², 4², 5², 6² = 36."
+    },
+    {
+      "id": 13,
+      "topic": "Quantitative",
+      "question": "What percentage of 250 is 75?",
+      "options": ["25%", "30%", "35%", "20%"],
+      "correct_answer": "30%",
+      "explanation": "(75 / 250) × 100 = 30%."
+    },
+    {
+      "id": 14,
+      "topic": "Verbal",
+      "question": "Select the correctly spelled word:",
+      "options": ["Accomodation", "Accommodation", "Acommodation", "Accomodattion"],
+      "correct_answer": "Accommodation",
+      "explanation": "Correct: 'Accommodation' with double 'c' and double 'm'."
+    },
+    {
+      "id": 15,
+      "topic": "Quantitative",
+      "question": "The average of 5 numbers is 25. One number is removed and average drops to 20. What was the removed number?",
+      "options": ["40", "45", "50", "55"],
+      "correct_answer": "45",
+      "explanation": "Sum of 5 = 125. Sum of 4 = 80. Removed = 125 - 80 = 45."
+    },
+    {
+      "id": 16,
+      "topic": "Logical Reasoning",
+      "question": "Which number should come next: 3, 7, 13, 21, 31, __?",
+      "options": ["41", "43", "45", "47"],
+      "correct_answer": "43",
+      "explanation": "Differences are 4, 6, 8, 10, 12. Next = 31 + 12 = 43."
+    },
+    {
+      "id": 17,
+      "topic": "Quantitative",
+      "question": "If 2x + 5 = 15, what is x?",
+      "options": ["3", "4", "5", "6"],
+      "correct_answer": "5",
+      "explanation": "2x = 15 - 5 = 10 → x = 5."
+    },
+    {
+      "id": 18,
+      "topic": "Verbal",
+      "question": "Fill in the blank: 'She is __ honest politician.'",
+      "options": ["a", "an", "the", "some"],
+      "correct_answer": "an",
+      "explanation": "Use 'an' before vowel sounds. 'Honest' begins with a silent 'h', sounding like a vowel."
+    },
+    {
+      "id": 19,
+      "topic": "Quantitative",
+      "question": "A car covers 120 km in 2 hours. What is its average speed?",
+      "options": ["50 km/h", "55 km/h", "60 km/h", "65 km/h"],
+      "correct_answer": "60 km/h",
+      "explanation": "Speed = Distance / Time = 120 / 2 = 60 km/h."
+    },
+    {
+      "id": 20,
+      "topic": "Logical Reasoning",
+      "question": "If some cats are dogs, and all dogs are birds, which must be true?",
+      "options": ["All cats are birds", "Some cats are birds", "No cats are birds", "All birds are dogs"],
+      "correct_answer": "Some cats are birds",
+      "explanation": "Since some cats are dogs and all dogs are birds, those cats that are dogs must be birds."
+    }
+  ]
+}

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login – PlaceMentor AI</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="[cdnjs.cloudflare.com](https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css)"/>
+</head>
+<body class="login-body">
+
+  <div class="login-container">
+    <div class="login-card">
+
+      <!-- Logo -->
+      <div class="login-logo">
+        <div class="logo-big">🤖</div>
+        <h1>PlaceMentor <span class="gradient-text">AI</span></h1>
+        <p>Enter your name to start practice</p>
+      </div>
+
+      <!-- Form -->
+      <form id="loginForm" onsubmit="return false;">
+
+        <div class="login-form-group">
+          <label>Your Name</label>
+          <div class="input-wrap">
+            <i class="fas fa-user"></i>
+            <input
+              type="text"
+              id="studentName"
+              class="login-input"
+              placeholder="e.g. Priya Sharma"
+              autocomplete="name"
+              required
+              autofocus
+            />
+          </div>
+        </div>
+
+        <div class="login-form-group">
+          <label>Number of Interview Questions</label>
+          <div class="input-wrap">
+            <i class="fas fa-list-ol"></i>
+            <select id="numQuestions" class="login-input" style="padding-left:44px;">
+              <option value="3">3 Questions (Quick)</option>
+              <option value="5" selected>5 Questions (Standard)</option>
+              <option value="10">10 Questions (Full Mock)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Error message area -->
+        <p id="errorMsg" style="color:var(--danger); font-size:0.85rem; margin-bottom:8px; display:none;"></p>
+
+        <!-- Action buttons -->
+        <div class="login-actions">
+          <button class="login-btn login-btn-primary" onclick="goTo('interview')">
+            <i class="fas fa-comments"></i> Start Mock Interview
+          </button>
+          <button class="login-btn login-btn-outline" onclick="goTo('aptitude')">
+            <i class="fas fa-brain"></i> Practice Aptitude Test
+          </button>
+          <button class="login-btn login-btn-ghost" onclick="goTo('dashboard')">
+            <i class="fas fa-chart-bar"></i> View Dashboard
+          </button>
+        </div>
+
+      </form>
+
+      <!-- Back link -->
+      <p style="text-align:center; margin-top:20px; font-size:0.82rem; color:var(--text-muted);">
+        <a href="index.html" style="color:var(--primary-light);">
+          <i class="fas fa-arrow-left"></i> Back to Home
+        </a>
+      </p>
+
+    </div>
+  </div>
+
+  <script>
+    /**
+     * Validate the form and navigate to the selected page.
+     * Stores the student name and question count in localStorage
+     * so other pages can access them.
+     */
+    function goTo(page) {
+      const nameInput = document.getElementById('studentName');
+      const name = nameInput.value.trim();
+
+      // Validation
+      if (!name || name.length < 2) {
+        const err = document.getElementById('errorMsg');
+        err.textContent = '⚠️ Please enter your name (at least 2 characters).';
+        err.style.display = 'block';
+        nameInput.focus();
+        return;
+      }
+
+      // Hide any previous errors
+      document.getElementById('errorMsg').style.display = 'none';
+
+      // Persist settings to localStorage
+      const numQ = document.getElementById('numQuestions').value;
+      localStorage.setItem('pm_student_name',   name);
+      localStorage.setItem('pm_num_questions',  numQ);
+
+      // Navigate
+      const pages = {
+        interview: 'interview.html',
+        aptitude:  'aptitude.html',
+        dashboard: 'dashboard.html'
+      };
+      window.location.href = pages[page];
+    }
+
+    // Allow pressing Enter to start interview
+    document.getElementById('studentName').addEventListener('keydown', e => {
+      if (e.key === 'Enter') goTo('interview');
+    });
+
+    // Pre-fill name if already stored
+    const stored = localStorage.getItem('pm_student_name');
+    if (stored) document.getElementById('studentName').value = stored;
+  </script>
+
+</body>
+</html>
+

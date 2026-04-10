@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Aptitude Test – PlaceMentor AI</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="[cdnjs.cloudflare.com](https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css)"/>
+</head>
+<body>
+
+  <button class="menu-toggle" onclick="toggleSidebar()">
+    <i class="fas fa-bars"></i>
+  </button>
+
+  <!-- Sidebar -->
+  <nav class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-logo">
+        <div class="logo-icon">🤖</div>
+        <span>PlaceMentor <span class="gradient-text">AI</span></span>
+      </div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="dashboard.html"><i class="fas fa-chart-bar"></i> Dashboard</a></li>
+      <li><a href="interview.html"><i class="fas fa-comments"></i> Mock Interview</a></li>
+      <li><a href="aptitude.html" class="active"><i class="fas fa-brain"></i> Aptitude Test</a></li>
+      <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+    </ul>
+    <div class="sidebar-footer">
+      <div class="student-info">
+        <div class="student-avatar" id="avatarInitial">S</div>
+        <div>
+          <div class="student-name-label" id="sidebarName">Student</div>
+          <div class="student-name-sub">Aptitude Test</div>
+        </div>
+      </div>
+      <a href="login.html" class="exit-btn">
+        <i class="fas fa-sign-out-alt"></i> Exit Session
+      </a>
+    </div>
+  </nav>
+
+  <!-- Main content -->
+  <div class="main-content">
+
+    <div class="page-header">
+      <h1>🎯 Aptitude <span class="gradient-text">Practice Test</span></h1>
+      <p>Answer all questions before the timer runs out. Each question has one correct answer.</p>
+    </div>
+
+    <div class="aptitude-layout">
+
+      <!-- Header bar: timer + progress -->
+      <div class="aptitude-header-bar" id="testHeaderBar">
+        <div class="timer-display" id="timerDisplay">
+          <i class="fas fa-clock"></i>
+          <span id="timerText">10:00</span>
+        </div>
+        <div class="apt-progress-wrap">
+          <div class="apt-progress-label">
+            <span>Questions Answered</span>
+            <span id="answeredCount">0 / 10</span>
+          </div>
+          <div class="progress-bar-wrap">
+            <div class="progress-bar-fill" id="aptProgressBar" style="width:0%"></div>
+          </div>
+        </div>
+        <button class="btn btn-primary" id="submitTestBtn" onclick="submitTest()">
+          <i class="fas fa-check"></i> Submit Test
+        </button>
+      </div>
+
+      <!-- Quiz screen -->
+      <div id="quizScreen">
+        <!-- Questions are injected here by JS -->
+        <div class="no-data" id="loadingMsg">
+          <div class="spinner" style="margin:0 auto 16px;"></div>
+          <p>Loading questions from server...</p>
+        </div>
+      </div>
+
+      <!-- Results screen (hidden until submitted) -->
+      <div class="results-screen" id="resultsScreen">
+        <div class="result-big-score">
+          <div class="score-num gradient-text" id="finalScore">—</div>
+          <div class="score-label">Correct Answers</div>
+          <div class="grade-big" id="finalGrade">—</div>
+          <div style="margin-top:16px; display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+            <button class="btn btn-primary" onclick="retakeTest()">
+              <i class="fas fa-redo"></i> Retake Test
+            </button>
+            <a href="dashboard.html" class="btn btn-secondary">
+              <i class="fas fa-chart-bar"></i> View Dashboard
+            </a>
+          </div>
+        </div>
+
+        <div class="card" style="margin-bottom:24px;">
+          <h3 style="margin-bottom:4px;">📊 Performance Summary</h3>
+          <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:16px;">Score breakdown by topic</p>
+          <div id="topicSummary"></div>
+        </div>
+
+        <div class="card">
+          <h3 style="margin-bottom:16px;">📋 Detailed Results</h3>
+          <div class="results-breakdown" id="resultsBreakdown"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="js/aptitude.js"></script>
+</body>
+</html>

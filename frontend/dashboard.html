@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard – PlaceMentor AI</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="[cdnjs.cloudflare.com](https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css)"/>
+  <!-- Chart.js for analytics charts -->
+  <script src="[cdn.jsdelivr.net](https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js)"></script>
+</head>
+<body>
+
+  <button class="menu-toggle" onclick="toggleSidebar()">
+    <i class="fas fa-bars"></i>
+  </button>
+
+  <!-- Sidebar -->
+  <nav class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-logo">
+        <div class="logo-icon">🤖</div>
+        <span>PlaceMentor <span class="gradient-text">AI</span></span>
+      </div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="dashboard.html" class="active"><i class="fas fa-chart-bar"></i> Dashboard</a></li>
+      <li><a href="interview.html"><i class="fas fa-comments"></i> Mock Interview</a></li>
+      <li><a href="aptitude.html"><i class="fas fa-brain"></i> Aptitude Test</a></li>
+      <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+    </ul>
+    <div class="sidebar-footer">
+      <div class="student-info">
+        <div class="student-avatar" id="avatarInitial">S</div>
+        <div>
+          <div class="student-name-label" id="sidebarName">Student</div>
+          <div class="student-name-sub">Placement Dashboard</div>
+        </div>
+      </div>
+      <a href="login.html" class="exit-btn">
+        <i class="fas fa-sign-out-alt"></i> Exit
+      </a>
+    </div>
+  </nav>
+
+  <!-- Main content -->
+  <div class="main-content">
+
+    <div class="page-header">
+      <h1>📊 Placement <span class="gradient-text">Dashboard</span></h1>
+      <p id="dashSubtitle">Loading your performance data...</p>
+    </div>
+
+    <!-- ── Overall Readiness ──────────────────────────── -->
+    <div class="readiness-card" id="readinessCard" style="margin-bottom:24px;">
+      <div class="readiness-ring-wrap">
+        <div class="readiness-ring">
+          <svg viewBox="0 0 120 120" width="120" height="120">
+            <circle class="ring-bg"   cx="60" cy="60" r="50"/>
+            <circle class="ring-fill" cx="60" cy="60" r="50"
+              id="readinessRingFill"
+              stroke-dasharray="314"
+              stroke-dashoffset="314"
+              stroke="url(#scoreGradient)"
+            />
+          </svg>
+          <div class="readiness-score-num">
+            <span class="big-num gradient-text" id="readinessScore">0</span>
+            <span class="pct">/ 100</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="readiness-info">
+        <h3>Overall Placement Readiness</h3>
+        <p id="readinessDesc">Complete more sessions to see your readiness score.</p>
+      </div>
+
+      <div class="readiness-bars">
+        <div class="readiness-bar-item">
+          <div class="readiness-bar-label">
+            <span>Interview Performance</span>
+            <span id="interviewPct">—%</span>
+          </div>
+          <div class="progress-bar-wrap">
+            <div class="progress-bar-fill" id="interviewBar" style="width:0%"></div>
+          </div>
+        </div>
+        <div class="readiness-bar-item">
+          <div class="readiness-bar-label">
+            <span>Aptitude Accuracy</span>
+            <span id="aptitudePct">—%</span>
+          </div>
+          <div class="progress-bar-wrap">
+            <div class="progress-bar-fill" id="aptitudeBar" style="width:0%; background:linear-gradient(90deg,#06B6D4,#7C3AED)"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Stats Row ─────────────────────────────────── -->
+    <div class="stats-row-grid" style="margin-bottom:24px;">
+      <div class="stat-card">
+        <div class="stat-icon violet">🎤</div>
+        <div>
+          <div class="stat-value gradient-text" id="statInterviewSessions">0</div>
+          <div class="stat-label">Interview Sessions</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon cyan">🧠</div>
+        <div>
+          <div class="stat-value gradient-text" id="statAptitudeSessions">0</div>
+          <div class="stat-label">Aptitude Tests</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon green">📈</div>
+        <div>
+          <div class="stat-value gradient-text" id="statAvgInterview">0%</div>
+          <div class="stat-label">Avg Interview Score</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon amber">🎯</div>
+        <div>
+          <div class="stat-value gradient-text" id="statAvgAptitude">0%</div>
+          <div class="stat-label">Avg Aptitude Score</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Dashboard Grid ────────────────────────────── -->
+    <div class="dashboard-grid">
+
+      <!-- Topic Performance -->
+      <div class="card">
+        <h3 style="margin-bottom:4px;">📚 Topic-wise Performance</h3>
+        <p style="color:var(--text-muted);font-size:0.82rem;margin-bottom:20px;">Interview score per topic</p>
+        <div class="topic-performance-list" id="topicPerformanceList">
+          <p style="color:var(--text-muted);font-size:0.85rem;">No data yet. Complete an interview session first.</p>
+        </div>
+      </div>
+
+      <!-- Weak Topics -->
+      <div class="card">
+        <h3 style="margin-bottom:4px;">⚠️ Topics to Improve</h3>
+        <p style="color:var(--text-muted);font-size:0.82rem;margin-bottom:16px;">Topics scoring below 60%</p>
+        <div class="weak-topics-list" id="weakTopicsList">
+          <p style="color:var(--text-muted);font-size:0.85rem;">No weak topics found!</p>
+        </div>
+
+        <div style="margin-top:24px;">
+          <h3 style="margin-bottom:4px;">🚀 Quick Actions</h3>
+          <div style="display:flex;flex-direction:column;gap:8px;margin-top:12px;">
+            <a href="interview.html" class="btn btn-primary" style="justify-content:center;">
+              <i class="fas fa-comments"></i> Start New Interview
+            </a>
+            <a href="aptitude.html" class="btn btn-secondary" style="justify-content:center;">
+              <i class="fas fa-brain"></i> Practice Aptitude
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recent Sessions -->
+      <div class="card">
+        <h3 style="margin-bottom:4px;">🕐 Recent Interview Sessions</h3>
+        <p style="color:var(--text-muted);font-size:0.82rem;margin-bottom:16px;">Last 5 completed sessions</p>
+        <div id="recentSessionsTable">
+          <p style="color:var(--text-muted);font-size:0.85rem;">No sessions yet.</p>
+        </div>
+      </div>
+
+      <!-- Score Chart -->
+      <div class="card">
+        <h3 style="margin-bottom:4px;">📈 Score Progression</h3>
+        <p style="color:var(--text-muted);font-size:0.82rem;margin-bottom:16px;">Interview scores over sessions</p>
+        <canvas id="scoreChart" height="200"></canvas>
+      </div>
+
+      <!-- Topic Radar Chart (full width) -->
+      <div class="card chart-card" style="grid-column:1/-1;">
+        <h3 style="margin-bottom:4px;">🎯 Topic Performance Chart</h3>
+        <p style="color:var(--text-muted);font-size:0.82rem;margin-bottom:16px;">Visual overview of skills</p>
+        <div style="max-width:480px;margin:0 auto;">
+          <canvas id="topicChart" height="280"></canvas>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SVG gradient for rings -->
+  <svg width="0" height="0" style="position:absolute;">
+    <defs>
+      <linearGradient id="scoreGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#7C3AED"/>
+        <stop offset="100%" stop-color="#06B6D4"/>
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

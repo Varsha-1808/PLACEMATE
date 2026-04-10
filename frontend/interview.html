@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mock Interview – PlaceMentor AI</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="[cdnjs.cloudflare.com](https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css)"/>
+</head>
+<body>
+
+  <!-- Mobile sidebar toggle -->
+  <button class="menu-toggle" onclick="toggleSidebar()">
+    <i class="fas fa-bars"></i>
+  </button>
+
+  <!-- Sidebar -->
+  <nav class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-logo">
+        <div class="logo-icon">🤖</div>
+        <span>PlaceMentor <span class="gradient-text">AI</span></span>
+      </div>
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="dashboard.html"><i class="fas fa-chart-bar"></i> Dashboard</a></li>
+      <li><a href="interview.html" class="active"><i class="fas fa-comments"></i> Mock Interview</a></li>
+      <li><a href="aptitude.html"><i class="fas fa-brain"></i> Aptitude Test</a></li>
+      <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+    </ul>
+
+    <div class="sidebar-footer">
+      <div class="student-info">
+        <div class="student-avatar" id="avatarInitial">S</div>
+        <div>
+          <div class="student-name-label" id="sidebarName">Student</div>
+          <div class="student-name-sub">Mock Interview</div>
+        </div>
+      </div>
+      <a href="login.html" class="exit-btn">
+        <i class="fas fa-sign-out-alt"></i> Exit Session
+      </a>
+    </div>
+  </nav>
+
+  <!-- Main content -->
+  <div class="main-content" style="padding:20px;">
+    <div class="interview-layout">
+
+      <!-- ── LEFT: Chat Panel ─────────────────────── -->
+      <div class="chat-panel">
+
+        <!-- Chat header -->
+        <div class="chat-header">
+          <div class="bot-avatar">🤖</div>
+          <div>
+            <div class="bot-name">PlaceMentor AI</div>
+            <div class="bot-status"><span class="status-dot"></span> Online – Ready to interview</div>
+          </div>
+          <div class="chat-progress">
+            <span id="progressText">0/0</span>
+            <div class="progress-pills" id="progressPills"></div>
+          </div>
+        </div>
+
+        <!-- Chat messages -->
+        <div class="chat-messages" id="chatMessages">
+          <!-- Messages are injected here by JS -->
+        </div>
+
+        <!-- Chat input -->
+        <div class="chat-input-area">
+          <div class="chat-input-wrap">
+            <textarea
+              id="answerInput"
+              class="chat-textarea"
+              placeholder="Type your answer here... (Press Enter to send)"
+              rows="2"
+              disabled
+            ></textarea>
+            <button class="send-btn" id="sendBtn" onclick="submitAnswer()" disabled>
+              <i class="fas fa-paper-plane"></i>
+            </button>
+          </div>
+          <p style="font-size:0.75rem; color:var(--text-muted); margin-top:6px;">
+            Shift+Enter for new line &nbsp;·&nbsp; Enter to submit
+          </p>
+        </div>
+      </div>
+
+      <!-- ── RIGHT: Info Panel ────────────────────── -->
+      <div class="support-panel">
+
+        <!-- Session info -->
+        <div class="session-info-card">
+          <h3><i class="fas fa-info-circle"></i> Session Info</h3>
+          <div class="info-row">
+            <span class="info-label">Student</span>
+            <span class="info-val" id="infoName">—</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Session ID</span>
+            <span class="info-val" id="infoSessionId" style="font-size:0.78rem;">—</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Progress</span>
+            <span class="info-val" id="infoProgress">0 / 0</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Current Topic</span>
+            <span class="info-val">
+              <span class="topic-badge" id="currentTopic">—</span>
+            </span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Avg Score</span>
+            <span class="info-val" id="infoAvgScore">—</span>
+          </div>
+        </div>
+
+        <!-- Score timeline -->
+        <div class="session-info-card">
+          <h3><i class="fas fa-history"></i> Score History</h3>
+          <div class="score-timeline" id="scoreTimeline">
+            <p style="font-size:0.82rem; color:var(--text-muted);">
+              Scores will appear here as you answer questions.
+            </p>
+          </div>
+        </div>
+
+        <!-- Tips card -->
+        <div class="session-info-card" style="background:var(--gradient-soft);">
+          <h3>💡 Interview Tips</h3>
+          <ul style="font-size:0.82rem; color:var(--text-muted); padding-left:16px; line-height:1.8;">
+            <li>Use technical terms correctly</li>
+            <li>Mention real-world examples</li>
+            <li>Structure: Define → Explain → Example</li>
+            <li>Cover all key points clearly</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SVG gradient definition for score rings -->
+  <svg width="0" height="0" style="position:absolute;">
+    <defs>
+      <linearGradient id="scoreGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%"   stop-color="#7C3AED"/>
+        <stop offset="100%" stop-color="#06B6D4"/>
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <script src="js/interview.js"></script>
+
+</body>
+</html>
